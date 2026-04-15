@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>France & Spain Trip 2026</title>
+  <style>
+    :root {
+      --bg: #f8f6f2;
+      --paper: #ffffff;
+      --ink: #172033;
+      --muted: #667085;
+      --line: #d9dee7;
+      --paris: #7c3aed;
+      --toulouse: #0f766e;
+      --calella: #ea580c;
+      --travel: #334155;
+      --accent: #111827;
+      --shadow: 0 18px 40px rgba(15, 23, 42, 0.08);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.45;
+    }
+    .page {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 32px 24px 48px;
+    }
+    .sheet {
+      background: var(--paper);
+      border: 1px solid rgba(217, 222, 231, 0.8);
+      border-radius: 28px;
+      padding: 40px;
+      box-shadow: var(--shadow);
+    }
+    .eyebrow {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--muted);
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+    h1 {
+      margin: 0;
+      font-size: clamp(2.2rem, 5vw, 3.6rem);
+      line-height: 1;
+      letter-spacing: -0.03em;
+    }
+    .subtitle {
+      margin-top: 14px;
+      max-width: 42rem;
+      color: var(--muted);
+      font-size: 1.05rem;
+    }
+    .meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 20px;
+    }
+    .pill {
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 8px 12px;
+      font-size: 0.92rem;
+      color: var(--accent);
+      background: #fff;
+      font-weight: 600;
+    }
+    .section {
+      margin-top: 34px;
+    }
+    .section h2 {
+      margin: 0 0 12px;
+      font-size: 1.35rem;
+      letter-spacing: -0.02em;
+    }
+    .lead {
+      margin: 0 0 18px;
+      color: var(--muted);
+    }
+    .timeline {
+      display: grid;
+      gap: 12px;
+    }
+    .track-head, .track {
+      display: grid;
+      grid-template-columns: 180px repeat(18, minmax(20px, 1fr));
+      gap: 6px;
+      align-items: center;
+    }
+    .track-head {
+      color: var(--muted);
+      font-size: 0.82rem;
+      font-weight: 700;
+    }
+    .label {
+      font-weight: 700;
+      color: var(--accent);
+    }
+    .cell {
+      height: 26px;
+      border-radius: 8px;
+      border: 1px solid #e7ebf1;
+      background: #f4f6f9;
+    }
+    .filled.paris { background: rgba(124,58,237,0.92); border-color: rgba(124,58,237,0.92); }
+    .filled.toulouse { background: rgba(15,118,110,0.92); border-color: rgba(15,118,110,0.92); }
+    .filled.calella { background: rgba(234,88,12,0.92); border-color: rgba(234,88,12,0.92); }
+    .filled.travel { background: rgba(51,65,85,0.92); border-color: rgba(51,65,85,0.92); }
+    .filled.anchor { background: rgba(185,28,28,0.92); border-color: rgba(185,28,28,0.92); }
+    .legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 14px;
+      color: var(--muted);
+      font-size: 0.93rem;
+      font-weight: 600;
+    }
+    .legend span {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 4px;
+      display: inline-block;
+    }
+    .days {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+    }
+    .day {
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 14px;
+      background: #fff;
+      min-height: 120px;
+    }
+    .day-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+      font-size: 0.95rem;
+      font-weight: 800;
+    }
+    .badge {
+      display: block;
+      width: fit-content;
+      padding: 6px 8px;
+      border-radius: 10px;
+      color: white;
+      font-size: 0.8rem;
+      font-weight: 700;
+      margin: 6px 0 0;
+    }
+    .badge.paris { background: var(--paris); }
+    .badge.toulouse { background: var(--toulouse); }
+    .badge.calella { background: var(--calella); }
+    .badge.travel { background: var(--travel); }
+    .badge.anchor { background: #b91c1c; }
+    .blocks {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+    }
+    .card {
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 18px;
+      background: #fff;
+    }
+    .card h3 {
+      margin: 0 0 10px;
+      font-size: 1.05rem;
+    }
+    .card p {
+      margin: 0;
+      color: var(--muted);
+    }
+    .footer {
+      margin-top: 28px;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+    @media (max-width: 860px) {
+      .days,
+      .blocks {
+        grid-template-columns: 1fr 1fr;
+      }
+      .track-head, .track {
+        grid-template-columns: 120px repeat(18, minmax(14px, 1fr));
+      }
+    }
+    @media (max-width: 640px) {
+      .sheet { padding: 22px; }
+      .days,
+      .blocks {
+        grid-template-columns: 1fr;
+      }
+      .track-head, .track {
+        grid-template-columns: 1fr;
+      }
+    }
+    @media print {
+      @page {
+        size: A4 portrait;
+        margin: 12mm;
+      }
+      body {
+        background: #fff;
+      }
+      .page {
+        max-width: none;
+        margin: 0;
+        padding: 0;
+      }
+      .sheet {
+        box-shadow: none;
+        border: 0;
+        border-radius: 0;
+        padding: 0;
+      }
+      .section, .day, .card {
+        page-break-inside: avoid;
+      }
+      .filled.paris, .filled.toulouse, .filled.calella, .filled.travel, .filled.anchor,
+      .dot, .badge {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="sheet">
+      <div class="eyebrow">Share version</div>
+      <h1>France & Spain Trip 2026</h1>
+      <p class="subtitle">A simple visual overview for Marc and May, focused on the trip shape, the fixed family dates, and the main travel flow.</p>
+      <div class="meta">
+        <span class="pill">25 May to 11 June</span>
+        <span class="pill">Relaxed pace</span>
+        <span class="pill">Paris, Toulouse, Calella</span>
+      </div>
+
+      <section class="section">
+        <h2>Trip shape</h2>
+        <p class="lead">Paris first, then Toulouse, then Calella, then back through Toulouse before returning to Paris and flying home.</p>
+        <div class="timeline">
+          <div class="track-head">
+            <div></div>
+            <div>25</div><div>26</div><div>27</div><div>28</div><div>29</div><div>30</div><div>31</div><div>1</div><div>2</div><div>3</div><div>4</div><div>5</div><div>6</div><div>7</div><div>8</div><div>9</div><div>10</div><div>11</div>
+          </div>
+          <div class="track">
+            <div class="label">Travel</div>
+            <div class="cell filled travel"></div><div class="cell filled travel"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell filled travel"></div><div class="cell filled travel"></div><div class="cell filled travel"></div><div class="cell filled travel"></div><div class="cell"></div><div class="cell"></div><div class="cell filled travel"></div>
+          </div>
+          <div class="track">
+            <div class="label">Paris</div>
+            <div class="cell"></div><div class="cell filled paris"></div><div class="cell filled paris"></div><div class="cell filled paris"></div><div class="cell filled paris"></div><div class="cell filled paris"></div><div class="cell filled paris"></div><div class="cell filled paris"></div><div class="cell filled paris"></div><div class="cell filled paris"></div><div class="cell filled paris"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell filled paris"></div><div class="cell filled paris"></div><div class="cell"></div>
+          </div>
+          <div class="track">
+            <div class="label">Toulouse</div>
+            <div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell filled toulouse"></div><div class="cell"></div><div class="cell filled toulouse"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div>
+          </div>
+          <div class="track">
+            <div class="label">Calella</div>
+            <div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell filled calella"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div>
+          </div>
+          <div class="track">
+            <div class="label">Fixed dates</div>
+            <div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell filled anchor"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell filled anchor"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div>
+          </div>
+        </div>
+        <div class="legend">
+          <span><i class="dot" style="background:#334155"></i> Travel</span>
+          <span><i class="dot" style="background:#7c3aed"></i> Paris</span>
+          <span><i class="dot" style="background:#0f766e"></i> Toulouse</span>
+          <span><i class="dot" style="background:#ea580c"></i> Calella</span>
+          <span><i class="dot" style="background:#b91c1c"></i> Fixed dates</span>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Key dates</h2>
+        <div class="days">
+          <div class="day"><div class="day-top"><span>Mon</span><span>25 May</span></div><span class="badge travel">Leave Chiang Mai</span></div>
+          <div class="day"><div class="day-top"><span>Tue</span><span>26 May</span></div><span class="badge travel">Arrive Paris</span><span class="badge paris">Paris block starts</span></div>
+          <div class="day"><div class="day-top"><span>Sat</span><span>30 May</span></div><span class="badge anchor">Roland Garros</span><span class="badge paris">With Patrick and Sophie</span></div>
+          <div class="day"><div class="day-top"><span>Thu</span><span>4 Jun</span></div><span class="badge anchor">Celine's birthday</span><span class="badge paris">In Paris with Dad and Nina</span></div>
+          <div class="day"><div class="day-top"><span>Fri</span><span>5 Jun</span></div><span class="badge travel">Paris → Toulouse</span></div>
+          <div class="day"><div class="day-top"><span>Sat</span><span>6 Jun</span></div><span class="badge travel">Toulouse → Calella</span></div>
+          <div class="day"><div class="day-top"><span>Sun</span><span>7 Jun</span></div><span class="badge travel">Calella → Toulouse</span></div>
+          <div class="day"><div class="day-top"><span>Mon</span><span>8 Jun</span></div><span class="badge travel">Toulouse → Paris</span></div>
+          <div class="day"><div class="day-top"><span>Tue</span><span>9 Jun</span></div><span class="badge paris">Paris buffer</span></div>
+          <div class="day"><div class="day-top"><span>Thu</span><span>11 Jun</span></div><span class="badge travel">Fly Paris → Bangkok</span></div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Main blocks</h2>
+        <div class="blocks">
+          <div class="card">
+            <h3>Paris</h3>
+            <p>26 May to 4 June. Time with Marc's dad, plus the Roland Garros day and Celine's birthday in Paris.</p>
+          </div>
+          <div class="card">
+            <h3>Toulouse</h3>
+            <p>Travel there on 5 June for the brother visit, then back through Toulouse on 7 June before returning to Paris on 8 June.</p>
+          </div>
+          <div class="card">
+            <h3>Calella</h3>
+            <p>A short seaside break on 6 June, then leave on 7 June for Toulouse.</p>
+          </div>
+          <div class="card">
+            <h3>Return home</h3>
+            <p>Back in Paris from 8 June before the flight home on 11 June, which keeps the end of the trip low stress.</p>
+          </div>
+        </div>
+      </section>
+
+      <p class="footer">Made as a simple shareable overview. Best exported to PDF with background graphics enabled.</p>
+    </div>
+  </div>
+</body>
+</html>
