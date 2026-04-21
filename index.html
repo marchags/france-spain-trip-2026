@@ -501,7 +501,7 @@
           </div>
           <div class="stat">
             <div class="stat-label">Planning mode</div>
-            <div class="stat-value">Blocks first, details later</div>
+            <div class="stat-value">Blocks plus key bookings</div>
           </div>
         </div>
       </aside>
@@ -517,11 +517,11 @@
         </div>
         <div class="track">
           <div class="track-label">Travel out</div>
-          <div class="cell filled travel"></div><div class="cell filled travel"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div>
+          <div class="cell filled travel"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div>
         </div>
         <div class="track">
           <div class="track-label">Paris block</div>
-          <div class="cell"></div><div class="cell filled paris"></div><div class="cell filled paris"></div><div class="cell filled paris"></div><div class="cell filled paris"></div><div class="cell filled paris"></div><div class="cell filled paris"></div><div class="cell filled paris"></div><div class="cell filled paris"></div><div class="cell filled paris"></div><div class="cell filled paris"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell filled paris"></div><div class="cell"></div>
+          <div class="cell filled paris"></div><div class="cell filled paris"></div><div class="cell filled paris"></div><div class="cell filled paris"></div><div class="cell filled paris"></div><div class="cell filled paris"></div><div class="cell filled paris"></div><div class="cell filled paris"></div><div class="cell filled paris"></div><div class="cell filled paris"></div><div class="cell filled paris"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell filled paris"></div><div class="cell"></div>
         </div>
         <div class="track">
           <div class="track-label">Fixed anchors</div>
@@ -553,10 +553,10 @@
       <h2>Month-style trip grid</h2>
       <p class="lead">A quick visual calendar so you can see the full trip shape in one glance. For PDF export, enable background graphics in the print dialog if your browser offers it.</p>
       <div class="month-grid">
-        <div class="day-card muted"><div class="day-top"><span>Mon</span><span>25</span></div><div class="mini-event travel">Travel out</div></div>
-        <div class="day-card"><div class="day-top"><span>Tue</span><span>26</span></div><div class="mini-event travel">Arrive Paris</div><div class="mini-event paris">Paris block</div></div>
+        <div class="day-card"><div class="day-top"><span>Mon</span><span>25</span></div><div class="mini-event travel">Travel day</div><div class="mini-event paris">Arrive Paris 23:30</div></div>
+        <div class="day-card"><div class="day-top"><span>Tue</span><span>26</span></div><div class="mini-event paris">Paris block</div><div class="mini-event paris">First full day</div></div>
         <div class="day-card"><div class="day-top"><span>Wed</span><span>27</span></div><div class="mini-event paris">Paris block</div></div>
-        <div class="day-card"><div class="day-top"><span>Thu</span><span>28</span></div><div class="mini-event paris">Paris block</div></div>
+        <div class="day-card"><div class="day-top"><span>Thu</span><span>28</span></div><div class="mini-event paris">Paris block</div><div class="mini-event buffer">Maybe: Orsay nocturne</div></div>
         <div class="day-card"><div class="day-top"><span>Fri</span><span>29</span></div><div class="mini-event paris">Paris block</div></div>
         <div class="day-card"><div class="day-top"><span>Sat</span><span>30</span></div><div class="mini-event paris">Paris block</div><div class="mini-event buffer">Roland Garros</div></div>
         <div class="day-card"><div class="day-top"><span>Sun</span><span>31</span></div><div class="mini-event paris">Paris block</div></div>
@@ -564,7 +564,7 @@
         <div class="day-card"><div class="day-top"><span>Mon</span><span>1</span></div><div class="mini-event paris">Paris block</div></div>
         <div class="day-card"><div class="day-top"><span>Tue</span><span>2</span></div><div class="mini-event paris">Paris block</div></div>
         <div class="day-card"><div class="day-top"><span>Wed</span><span>3</span></div><div class="mini-event paris">Paris block</div></div>
-        <div class="day-card"><div class="day-top"><span>Thu</span><span>4</span></div><div class="mini-event paris">Paris block</div><div class="mini-event buffer">Celine's birthday</div></div>
+        <div class="day-card"><div class="day-top"><span>Thu</span><span>4</span></div><div class="mini-event paris">Paris block</div><div class="mini-event buffer">Celine dinner, 19:00</div></div>
         <div class="day-card"><div class="day-top"><span>Fri</span><span>5</span></div><div class="mini-event travel">Paris → Toulouse</div><div class="mini-event toulouse">Toulouse</div></div>
         <div class="day-card"><div class="day-top"><span>Sat</span><span>6</span></div><div class="mini-event travel">Toulouse → Calella</div><div class="mini-event calella">Calella</div></div>
         <div class="day-card"><div class="day-top"><span>Sun</span><span>7</span></div><div class="mini-event travel">Calella → Toulouse</div><div class="mini-event toulouse">Toulouse</div></div>
@@ -584,9 +584,9 @@
           <div class="tag paris">Paris</div>
           <h3>Paris block</h3>
           <ul>
-            <li>26 May to 4 June</li>
+            <li>Late arrival on 25 May, then 26 May to 4 June as the main Paris block</li>
             <li>See Marc's dad</li>
-            <li>Includes the two fixed Paris anchors</li>
+            <li>Includes Roland Garros, the booked Le Tout-Paris dinner, and a possible Orsay evening</li>
           </ul>
         </article>
         <article class="card">
@@ -641,6 +641,49 @@
         <p class="footer-note">
           Best practical combo: dashboard for clarity, Google Calendar for edits, trip note for thinking.
         </p>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Paris decisions to lock soon</h2>
+      <p class="lead">New inputs from Nina added a real dinner booking plus two Paris ideas that probably need quick yes or no decisions.</p>
+      <div class="cards">
+        <article class="card">
+          <div class="tag paris">Booked</div>
+          <h3>Le Tout-Paris</h3>
+          <ul>
+            <li>Thursday 4 June at 19:00</li>
+            <li>Celine's birthday dinner</li>
+            <li>6 people, Quai du Louvre</li>
+          </ul>
+        </article>
+        <article class="card">
+          <div class="tag paris">Maybe</div>
+          <h3>Musée d'Orsay nocturne</h3>
+          <ul>
+            <li>Suggested for Thursday 28 May</li>
+            <li>Late museum opening</li>
+            <li>Restaurant opens at 19:00</li>
+          </ul>
+        </article>
+        <article class="card">
+          <div class="tag paris">Maybe</div>
+          <h3>Les Ombres</h3>
+          <ul>
+            <li>Belated birthday dinner for May</li>
+            <li>Eiffel Tower view</li>
+            <li>Worth deciding quickly if you want it</li>
+          </ul>
+        </article>
+        <article class="card">
+          <div class="tag paris">Correction</div>
+          <h3>Paris arrival</h3>
+          <ul>
+            <li>CDG arrival is 25 May at 23:30</li>
+            <li>26 May is the first full Paris day</li>
+            <li>That wording is now fixed here</li>
+          </ul>
+        </article>
       </div>
     </section>
   </div>
