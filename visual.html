@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>France & Spain Trip 2026 — Visual Grid</title>
+  <style>
+    :root {
+      --bg: #f7f3eb;
+      --card: #ffffff;
+      --text: #1f2937;
+      --muted: #667085;
+      --line: #e6e0d6;
+      --accent: #2563eb;
+      --accent-soft: #e8f0ff;
+      --paris: #6d28d9;
+      --toulouse: #0f766e;
+      --calella: #ea580c;
+      --shadow: 0 16px 40px rgba(31, 41, 55, 0.08);
+      --radius: 22px;
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(37, 99, 235, 0.10), transparent 30%),
+        radial-gradient(circle at top right, rgba(234, 88, 12, 0.10), transparent 28%),
+        var(--bg);
+    }
+    .wrap {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 28px;
+    }
+    .hero, .section {
+      background: rgba(255,255,255,0.92);
+      border: 1px solid rgba(255,255,255,0.8);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+    .hero {
+      padding: 32px;
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 24px;
+      align-items: center;
+    }
+    .eyebrow {
+      color: var(--accent);
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-size: 12px;
+      margin-bottom: 10px;
+    }
+    h1 {
+      margin: 0 0 12px;
+      font-size: clamp(2.2rem, 5vw, 4rem);
+      line-height: 1;
+    }
+    h2 { margin: 0 0 10px; font-size: 1.45rem; }
+    h3 { margin: 0 0 8px; font-size: 1.05rem; }
+    p { line-height: 1.6; }
+    .sub {
+      color: var(--muted);
+      font-size: 1.08rem;
+      max-width: 62ch;
+      margin: 0;
+    }
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 22px;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      padding: 13px 17px;
+      border-radius: 14px;
+      border: 1px solid var(--line);
+      background: var(--card);
+      color: var(--text);
+      font-weight: 800;
+    }
+    .btn.primary {
+      background: var(--accent);
+      color: white;
+      border-color: var(--accent);
+    }
+    .notice {
+      background: var(--accent-soft);
+      border: 1px solid #c7d7fe;
+      border-radius: 18px;
+      padding: 18px;
+    }
+    .notice strong { display: block; margin-bottom: 6px; }
+    .section { margin-top: 24px; padding: 24px; }
+    .lead { margin: 0 0 18px; color: var(--muted); }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+    .grid.two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 18px;
+    }
+    .tag {
+      display: inline-block;
+      margin-bottom: 12px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      font-size: 0.78rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .tag.paris { color: var(--paris); background: rgba(109,40,217,0.10); }
+    .tag.toulouse { color: var(--toulouse); background: rgba(15,118,110,0.10); }
+    .tag.calella { color: var(--calella); background: rgba(234,88,12,0.12); }
+    .tag.travel { color: #334155; background: rgba(51,65,85,0.10); }
+    ul { margin: 0; padding-left: 18px; }
+    li { margin: 8px 0; color: #374151; line-height: 1.45; }
+    .agenda {
+      display: grid;
+      gap: 12px;
+    }
+    .agenda-day {
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      gap: 16px;
+      align-items: stretch;
+      background: white;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 14px;
+    }
+    .agenda-date {
+      border-radius: 14px;
+      background: var(--accent-soft);
+      padding: 12px;
+      font-weight: 900;
+      text-align: center;
+      color: #1d4ed8;
+    }
+    .agenda-date small {
+      display: block;
+      color: var(--muted);
+      font-size: 0.78rem;
+      margin-top: 4px;
+      font-weight: 800;
+    }
+    .agenda-items {
+      display: grid;
+      gap: 8px;
+      align-content: center;
+    }
+    .agenda-item {
+      padding: 10px 12px;
+      border-radius: 12px;
+      background: #f8fafc;
+      border: 1px solid #eef2f7;
+      line-height: 1.45;
+    }
+    .agenda-item strong { color: #111827; }
+    .month-grid {
+      display: grid;
+      grid-template-columns: repeat(7, minmax(0, 1fr));
+      gap: 10px;
+    }
+    .day-card {
+      min-height: 128px;
+      background: white;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .day-card.muted {
+      opacity: 0.55;
+      background: rgba(255,255,255,0.68);
+    }
+    .day-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.88rem;
+      font-weight: 900;
+    }
+    .mini-event {
+      padding: 7px 9px;
+      border-radius: 10px;
+      font-size: 0.82rem;
+      font-weight: 850;
+      line-height: 1.25;
+      color: white;
+    }
+    .mini-event.paris { background: var(--paris); }
+    .mini-event.toulouse { background: var(--toulouse); }
+    .mini-event.calella { background: var(--calella); }
+    .mini-event.travel { background: #334155; }
+    .mini-event.anchor { background: #b91c1c; }
+    .mini-event.open { background: #94a3b8; }
+    .calendar-note {
+      margin-top: 14px;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+    .compact-list {
+      display: grid;
+      gap: 10px;
+    }
+    .row {
+      display: grid;
+      grid-template-columns: 150px 1fr;
+      gap: 14px;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--line);
+    }
+    .row:last-child { border-bottom: 0; }
+    .date { font-weight: 900; color: #111827; }
+    .footer {
+      text-align: center;
+      margin: 24px 0 8px;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+    @media (max-width: 900px) {
+      .hero, .grid, .grid.two { grid-template-columns: 1fr; }
+      .month-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    }
+    @media (max-width: 640px) {
+      .wrap { padding: 16px; }
+      .hero, .section { padding: 18px; }
+      .row, .agenda-day { grid-template-columns: 1fr; gap: 8px; }
+      .month-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+  
+    .wrap { max-width: 1240px; }
+    .hero { grid-template-columns: 1fr; }
+    .section { margin-top: 18px; }
+    @media (min-width: 901px) {
+      .month-grid { grid-template-columns: repeat(7, minmax(0, 1fr)); }
+      .day-card { min-height: 138px; }
+    }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <section class="hero">
+      <div>
+        <div class="eyebrow">Our France & Spain trip</div>
+        <h1>Trip visual grid</h1>
+        <p class="sub">
+          The quick visual version for sharing. Purple is Paris, green is Toulouse, orange is Calella,
+          dark blue is travel, red is a fixed family booking, and grey is easy/open time.
+        </p>
+      </div>
+    </section>
+
+    <section class="section" id="visual-grid">
+      <h2>Visual trip grid</h2>
+      <p class="lead">Same plan, but easier to see at a glance. Purple is Paris, green is Toulouse, orange is Calella, dark blue is travel, red is a fixed family booking.</p>
+      <div class="month-grid">
+        <div class="day-card"><div class="day-top"><span>Mon</span><span>25</span></div><div class="mini-event travel">Fly / arrive Paris late</div></div>
+        <div class="day-card"><div class="day-top"><span>Tue</span><span>26</span></div><div class="mini-event paris">Paris — Dad & Nina</div><div class="mini-event open">Easy first day</div></div>
+        <div class="day-card"><div class="day-top"><span>Wed</span><span>27</span></div><div class="mini-event paris">Paris</div><div class="mini-event anchor">Fondation LV 11:30</div></div>
+        <div class="day-card"><div class="day-top"><span>Thu</span><span>28</span></div><div class="mini-event paris">Paris</div><div class="mini-event anchor">Musée d’Orsay</div></div>
+        <div class="day-card"><div class="day-top"><span>Fri</span><span>29</span></div><div class="mini-event paris">Paris</div></div>
+        <div class="day-card"><div class="day-top"><span>Sat</span><span>30</span></div><div class="mini-event paris">Paris</div><div class="mini-event anchor">Roland Garros</div></div>
+        <div class="day-card"><div class="day-top"><span>Sun</span><span>31</span></div><div class="mini-event paris">Paris</div></div>
+
+        <div class="day-card"><div class="day-top"><span>Mon</span><span>1</span></div><div class="mini-event paris">Paris</div></div>
+        <div class="day-card"><div class="day-top"><span>Tue</span><span>2</span></div><div class="mini-event paris">Paris</div></div>
+        <div class="day-card"><div class="day-top"><span>Wed</span><span>3</span></div><div class="mini-event paris">Paris</div></div>
+        <div class="day-card"><div class="day-top"><span>Thu</span><span>4</span></div><div class="mini-event paris">Paris</div><div class="mini-event anchor">Celine’s birthday dinner</div></div>
+        <div class="day-card"><div class="day-top"><span>Fri</span><span>5</span></div><div class="mini-event travel">Paris → Toulouse</div><div class="mini-event travel">Toulouse → Calella</div><div class="mini-event calella">Calella</div></div>
+        <div class="day-card"><div class="day-top"><span>Sat</span><span>6</span></div><div class="mini-event calella">Calella</div><div class="mini-event open">Easy seaside day</div></div>
+        <div class="day-card"><div class="day-top"><span>Sun</span><span>7</span></div><div class="mini-event travel">Calella → Toulouse</div><div class="mini-event toulouse">Toulouse</div></div>
+
+        <div class="day-card"><div class="day-top"><span>Mon</span><span>8</span></div><div class="mini-event travel">Toulouse → Paris</div><div class="mini-event open">Train still to book</div></div>
+        <div class="day-card"><div class="day-top"><span>Tue</span><span>9</span></div><div class="mini-event paris">Paris</div><div class="mini-event anchor">Les Ombres 19:00</div></div>
+        <div class="day-card"><div class="day-top"><span>Wed</span><span>10</span></div><div class="mini-event paris">Paris buffer</div></div>
+        <div class="day-card"><div class="day-top"><span>Thu</span><span>11</span></div><div class="mini-event travel">Fly home</div></div>
+        <div class="day-card muted"><div class="day-top"><span>Fri</span><span>12</span></div></div>
+        <div class="day-card muted"><div class="day-top"><span>Sat</span><span>13</span></div></div>
+        <div class="day-card muted"><div class="day-top"><span>Sun</span><span>14</span></div></div>
+      </div>
+    </section>
+
+    <p class="footer">Shared visual version — I’ll keep this updated when the trip changes.</p>
+  </main>
+</body>
+</html>
