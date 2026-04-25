@@ -130,15 +130,50 @@
     .tag.travel { color: #334155; background: rgba(51,65,85,0.10); }
     ul { margin: 0; padding-left: 18px; }
     li { margin: 8px 0; color: #374151; line-height: 1.45; }
-    .calendar-frame {
-      width: 100%;
-      height: 680px;
+    .agenda {
+      display: grid;
+      gap: 12px;
+    }
+    .agenda-day {
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      gap: 16px;
+      align-items: stretch;
+      background: white;
       border: 1px solid var(--line);
       border-radius: 18px;
-      background: white;
+      padding: 14px;
     }
-    .calendar-fallback {
-      margin-top: 12px;
+    .agenda-date {
+      border-radius: 14px;
+      background: var(--accent-soft);
+      padding: 12px;
+      font-weight: 900;
+      text-align: center;
+      color: #1d4ed8;
+    }
+    .agenda-date small {
+      display: block;
+      color: var(--muted);
+      font-size: 0.78rem;
+      margin-top: 4px;
+      font-weight: 800;
+    }
+    .agenda-items {
+      display: grid;
+      gap: 8px;
+      align-content: center;
+    }
+    .agenda-item {
+      padding: 10px 12px;
+      border-radius: 12px;
+      background: #f8fafc;
+      border: 1px solid #eef2f7;
+      line-height: 1.45;
+    }
+    .agenda-item strong { color: #111827; }
+    .calendar-note {
+      margin-top: 14px;
       color: var(--muted);
       font-size: 0.95rem;
     }
@@ -163,13 +198,11 @@
     }
     @media (max-width: 900px) {
       .hero, .grid, .grid.two { grid-template-columns: 1fr; }
-      .calendar-frame { height: 620px; }
     }
     @media (max-width: 640px) {
       .wrap { padding: 16px; }
       .hero, .section { padding: 18px; }
-      .row { grid-template-columns: 1fr; gap: 4px; }
-      .calendar-frame { height: 560px; }
+      .row, .agenda-day { grid-template-columns: 1fr; gap: 8px; }
     }
   </style>
 </head>
@@ -194,14 +227,62 @@
     </section>
 
     <section class="section" id="calendar">
-      <h2>Live trip calendar</h2>
-      <p class="lead">This is the main thing to use for dates, times, bookings, dinners and travel days.</p>
-      <iframe
-        class="calendar-frame"
-        src="https://calendar.google.com/calendar/embed?src=40d12cbbad6de226e1b0ce078a70f88b4e73cd9d21ba1df0352e7882eece781f%40group.calendar.google.com&ctz=Europe%2FParis&mode=AGENDA&showTitle=0&showPrint=0&showCalendars=0"
-        title="France & Spain Trip 2026 calendar">
-      </iframe>
-      <p class="calendar-fallback">If the embedded calendar does not load, use the blue “Open the live calendar” button above.</p>
+      <h2>Trip calendar</h2>
+      <p class="lead">No embedded Google mess here — this is the useful shared version of the calendar. I’ll keep this page updated as the plan changes.</p>
+      <div class="agenda">
+        <div class="agenda-day">
+          <div class="agenda-date">25 May<small>Mon</small></div>
+          <div class="agenda-items"><div class="agenda-item"><strong>Arrive in Paris</strong> late evening.</div></div>
+        </div>
+        <div class="agenda-day">
+          <div class="agenda-date">26 May<small>Tue</small></div>
+          <div class="agenda-items"><div class="agenda-item"><strong>Paris</strong> — settle in, stay with Dad and Nina.</div></div>
+        </div>
+        <div class="agenda-day">
+          <div class="agenda-date">27 May<small>Wed</small></div>
+          <div class="agenda-items"><div class="agenda-item"><strong>11:30 — Fondation Louis Vuitton</strong>, then lunch planned at Le Frank.</div></div>
+        </div>
+        <div class="agenda-day">
+          <div class="agenda-date">28 May<small>Thu</small></div>
+          <div class="agenda-items"><div class="agenda-item"><strong>Musée d’Orsay</strong> — booked, tickets with Nina.</div></div>
+        </div>
+        <div class="agenda-day">
+          <div class="agenda-date">30 May<small>Sat</small></div>
+          <div class="agenda-items"><div class="agenda-item"><strong>Roland Garros</strong> — Patrick has the tickets.</div></div>
+        </div>
+        <div class="agenda-day">
+          <div class="agenda-date">4 Jun<small>Thu</small></div>
+          <div class="agenda-items"><div class="agenda-item"><strong>19:00 — Celine’s birthday dinner</strong> at Le Tout-Paris.</div></div>
+        </div>
+        <div class="agenda-day">
+          <div class="agenda-date">5 Jun<small>Fri</small></div>
+          <div class="agenda-items">
+            <div class="agenda-item"><strong>12:38 — Train Paris Montparnasse → Toulouse Matabiau.</strong></div>
+            <div class="agenda-item"><strong>Then Toulouse → Calella with Patrick.</strong></div>
+          </div>
+        </div>
+        <div class="agenda-day">
+          <div class="agenda-date">5–7 Jun<small>Fri–Sun</small></div>
+          <div class="agenda-items"><div class="agenda-item"><strong>Calella</strong> — stay at Patrick’s apartment, keep it easy.</div></div>
+        </div>
+        <div class="agenda-day">
+          <div class="agenda-date">7 Jun<small>Sun</small></div>
+          <div class="agenda-items"><div class="agenda-item"><strong>Calella → Toulouse</strong> with Patrick.</div></div>
+        </div>
+        <div class="agenda-day">
+          <div class="agenda-date">8 Jun<small>Mon</small></div>
+          <div class="agenda-items"><div class="agenda-item"><strong>Toulouse → Paris</strong> — I still need to book this return train.</div></div>
+        </div>
+        <div class="agenda-day">
+          <div class="agenda-date">9 Jun<small>Tue</small></div>
+          <div class="agenda-items"><div class="agenda-item"><strong>19:00 — Les Ombres</strong> for May’s belated birthday dinner.</div></div>
+        </div>
+        <div class="agenda-day">
+          <div class="agenda-date">11 Jun<small>Thu</small></div>
+          <div class="agenda-items"><div class="agenda-item"><strong>Fly home.</strong></div></div>
+        </div>
+      </div>
+      <p class="calendar-note">The blue button still opens the Google Calendar if anyone wants the live app view, but this page no longer depends on an embedded Google frame.</p>
     </section>
 
     <section class="section" id="quick-dates">
