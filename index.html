@@ -3,22 +3,21 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>France & Spain Trip 2026 Dashboard</title>
+  <title>France & Spain Trip 2026</title>
   <style>
     :root {
-      --bg: #f7f5f1;
-      --card: rgba(255,255,255,0.88);
+      --bg: #f7f3eb;
+      --card: #ffffff;
       --text: #1f2937;
-      --muted: #6b7280;
-      --line: #e5e7eb;
+      --muted: #667085;
+      --line: #e6e0d6;
       --accent: #2563eb;
-      --paris: #7c3aed;
+      --accent-soft: #e8f0ff;
+      --paris: #6d28d9;
       --toulouse: #0f766e;
       --calella: #ea580c;
-      --travel: #334155;
-      --buffer: #b91c1c;
-      --shadow: 0 12px 30px rgba(15, 23, 42, 0.08);
-      --radius: 18px;
+      --shadow: 0 16px 40px rgba(31, 41, 55, 0.08);
+      --radius: 22px;
     }
 
     * { box-sizing: border-box; }
@@ -27,58 +26,49 @@
       font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       color: var(--text);
       background:
-        radial-gradient(circle at top left, rgba(124, 58, 237, 0.10), transparent 26%),
-        radial-gradient(circle at top right, rgba(234, 88, 12, 0.10), transparent 22%),
+        radial-gradient(circle at top left, rgba(37, 99, 235, 0.10), transparent 30%),
+        radial-gradient(circle at top right, rgba(234, 88, 12, 0.10), transparent 28%),
         var(--bg);
     }
     .wrap {
-      max-width: 1200px;
+      max-width: 1120px;
       margin: 0 auto;
       padding: 28px;
     }
-    .hero {
-      background: linear-gradient(135deg, rgba(255,255,255,0.94), rgba(255,255,255,0.78));
-      border: 1px solid rgba(255,255,255,0.7);
-      border-radius: 28px;
+    .hero, .section {
+      background: rgba(255,255,255,0.92);
+      border: 1px solid rgba(255,255,255,0.8);
+      border-radius: var(--radius);
       box-shadow: var(--shadow);
-      padding: 30px;
+    }
+    .hero {
+      padding: 32px;
       display: grid;
-      grid-template-columns: 1.4fr 1fr;
+      grid-template-columns: 1.2fr 0.8fr;
       gap: 24px;
       align-items: center;
     }
     .eyebrow {
       color: var(--accent);
-      font-weight: 700;
+      font-weight: 800;
       text-transform: uppercase;
       letter-spacing: 0.08em;
       font-size: 12px;
       margin-bottom: 10px;
     }
     h1 {
-      margin: 0 0 10px;
-      font-size: clamp(2rem, 4vw, 3.4rem);
-      line-height: 1.02;
+      margin: 0 0 12px;
+      font-size: clamp(2.2rem, 5vw, 4rem);
+      line-height: 1;
     }
+    h2 { margin: 0 0 10px; font-size: 1.45rem; }
+    h3 { margin: 0 0 8px; font-size: 1.05rem; }
+    p { line-height: 1.6; }
     .sub {
       color: var(--muted);
-      font-size: 1.03rem;
-      line-height: 1.6;
-      max-width: 60ch;
-    }
-    .pill-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 18px;
-    }
-    .pill {
-      padding: 10px 14px;
-      border-radius: 999px;
-      background: rgba(37, 99, 235, 0.08);
-      color: var(--accent);
-      font-weight: 600;
-      font-size: 0.95rem;
+      font-size: 1.08rem;
+      max-width: 62ch;
+      margin: 0;
     }
     .actions {
       display: flex;
@@ -90,612 +80,205 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 8px;
       text-decoration: none;
-      padding: 12px 16px;
-      border-radius: 12px;
+      padding: 13px 17px;
+      border-radius: 14px;
       border: 1px solid var(--line);
+      background: var(--card);
       color: var(--text);
-      background: white;
-      font-weight: 700;
-      box-shadow: 0 4px 14px rgba(15, 23, 42, 0.05);
+      font-weight: 800;
     }
     .btn.primary {
       background: var(--accent);
       color: white;
       border-color: var(--accent);
     }
-    .summary-card {
-      background: rgba(248, 250, 252, 0.84);
-      border: 1px solid rgba(255,255,255,0.7);
-      border-radius: 20px;
-      padding: 22px;
-    }
-    .summary-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 14px;
-      margin-top: 8px;
-    }
-    .stat {
-      background: white;
-      border-radius: 16px;
-      padding: 16px;
-      border: 1px solid var(--line);
-    }
-    .stat-label {
-      font-size: 0.82rem;
-      color: var(--muted);
-      margin-bottom: 8px;
-      text-transform: uppercase;
-      letter-spacing: 0.04em;
-      font-weight: 700;
-    }
-    .stat-value {
-      font-size: 1.15rem;
-      font-weight: 800;
-    }
-    .section {
-      margin-top: 26px;
-      background: var(--card);
-      border: 1px solid rgba(255,255,255,0.75);
-      border-radius: var(--radius);
-      padding: 24px;
-      box-shadow: var(--shadow);
-    }
-    .section h2 {
-      margin: 0 0 8px;
-      font-size: 1.35rem;
-    }
-    .section p.lead {
-      margin: 0 0 18px;
-      color: var(--muted);
-    }
-    .timeline {
-      display: grid;
-      gap: 14px;
-    }
-    .track-head, .track {
-      display: grid;
-      grid-template-columns: 190px repeat(18, minmax(24px, 1fr));
-      gap: 6px;
-      align-items: center;
-    }
-    .track-head {
-      color: var(--muted);
-      font-size: 0.85rem;
-      font-weight: 700;
-    }
-    .track-label {
-      font-weight: 700;
-      padding-right: 10px;
-    }
-    .cell {
-      height: 26px;
-      border-radius: 8px;
-      background: #eef2f7;
-      border: 1px solid #e6ebf2;
-    }
-    .filled.paris { background: rgba(124,58,237,0.88); border-color: rgba(124,58,237,0.88); }
-    .filled.toulouse { background: rgba(15,118,110,0.88); border-color: rgba(15,118,110,0.88); }
-    .filled.calella { background: rgba(234,88,12,0.88); border-color: rgba(234,88,12,0.88); }
-    .filled.travel { background: rgba(51,65,85,0.88); border-color: rgba(51,65,85,0.88); }
-    .filled.buffer { background: rgba(185,28,28,0.88); border-color: rgba(185,28,28,0.88); }
-    .legend {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-top: 16px;
-    }
-    .legend-item {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      color: var(--muted);
-      font-weight: 600;
-      font-size: 0.94rem;
-    }
-    .swatch {
-      width: 14px;
-      height: 14px;
-      border-radius: 4px;
-    }
-    .month-grid {
-      display: grid;
-      grid-template-columns: repeat(7, minmax(0, 1fr));
-      gap: 10px;
-    }
-    .day-card {
-      min-height: 118px;
-      background: white;
-      border: 1px solid var(--line);
-      border-radius: 16px;
-      padding: 12px;
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
-    .day-card.muted {
-      opacity: 0.4;
-      background: rgba(255,255,255,0.6);
-    }
-    .day-top {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      font-size: 0.88rem;
-      font-weight: 800;
-    }
-    .day-label {
-      color: var(--muted);
-      font-weight: 700;
-      text-transform: uppercase;
-      font-size: 0.78rem;
-      letter-spacing: 0.04em;
-    }
-    .mini-event {
-      padding: 6px 8px;
-      border-radius: 10px;
-      font-size: 0.82rem;
-      font-weight: 700;
-      line-height: 1.3;
-      color: white;
-    }
-    .mini-event.paris { background: var(--paris); }
-    .mini-event.toulouse { background: var(--toulouse); }
-    .mini-event.calella { background: var(--calella); }
-    .mini-event.travel { background: var(--travel); }
-    .mini-event.buffer { background: var(--buffer); }
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 16px;
-    }
-    .card {
-      background: white;
-      border: 1px solid var(--line);
+    .notice {
+      background: var(--accent-soft);
+      border: 1px solid #c7d7fe;
       border-radius: 18px;
       padding: 18px;
     }
-    .card h3 {
-      margin: 0 0 10px;
-      font-size: 1.08rem;
+    .notice strong { display: block; margin-bottom: 6px; }
+    .section { margin-top: 24px; padding: 24px; }
+    .lead { margin: 0 0 18px; color: var(--muted); }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+    .grid.two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 18px;
     }
     .tag {
       display: inline-block;
       margin-bottom: 12px;
       padding: 6px 10px;
       border-radius: 999px;
-      font-size: 0.8rem;
-      font-weight: 800;
+      font-size: 0.78rem;
+      font-weight: 900;
       text-transform: uppercase;
       letter-spacing: 0.05em;
     }
-    .tag.paris { background: rgba(124,58,237,0.1); color: var(--paris); }
-    .tag.toulouse { background: rgba(15,118,110,0.1); color: var(--toulouse); }
-    .tag.calella { background: rgba(234,88,12,0.1); color: var(--calella); }
-    .tag.buffer { background: rgba(185,28,28,0.1); color: var(--buffer); }
+    .tag.paris { color: var(--paris); background: rgba(109,40,217,0.10); }
+    .tag.toulouse { color: var(--toulouse); background: rgba(15,118,110,0.10); }
+    .tag.calella { color: var(--calella); background: rgba(234,88,12,0.12); }
+    .tag.travel { color: #334155; background: rgba(51,65,85,0.10); }
     ul { margin: 0; padding-left: 18px; }
-    li { margin: 8px 0; color: #374151; }
-    .split {
-      display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
-      gap: 18px;
-    }
-    .rules, .workflow {
-      background: white;
+    li { margin: 8px 0; color: #374151; line-height: 1.45; }
+    .calendar-frame {
+      width: 100%;
+      height: 680px;
       border: 1px solid var(--line);
       border-radius: 18px;
-      padding: 18px;
+      background: white;
     }
-    .footer-note {
-      margin-top: 18px;
+    .calendar-fallback {
+      margin-top: 12px;
       color: var(--muted);
-      font-size: 0.94rem;
+      font-size: 0.95rem;
     }
-    .print-title {
-      display: none;
+    .compact-list {
+      display: grid;
+      gap: 10px;
     }
-    @media print {
-      @page {
-        size: A4 portrait;
-        margin: 12mm;
-      }
-      :root {
-        --bg: #ffffff;
-        --card: #ffffff;
-        --text: #111827;
-        --muted: #4b5563;
-        --line: #d1d5db;
-        --shadow: none;
-      }
-      body {
-        background: #ffffff !important;
-        color: #111827;
-        font-size: 11pt;
-      }
-      .wrap {
-        max-width: none;
-        margin: 0;
-        padding: 0;
-      }
-      .print-title {
-        display: block;
-        margin-bottom: 10mm;
-        border-bottom: 2px solid #111827;
-        padding-bottom: 5mm;
-      }
-      .print-title h1 {
-        font-size: 24pt;
-        margin: 0 0 3mm;
-      }
-      .print-title p {
-        margin: 0;
-        color: #4b5563;
-      }
-      .hero {
-        grid-template-columns: 1fr;
-        padding: 0;
-        border: 0;
-        border-radius: 0;
-        background: #ffffff;
-        box-shadow: none;
-        gap: 6mm;
-        page-break-inside: avoid;
-      }
-      .eyebrow {
-        color: #374151;
-      }
-      .actions {
-        display: none;
-      }
-      .pill-row {
-        margin-top: 4mm;
-      }
-      .pill {
-        border: 1px solid #d1d5db;
-        background: #ffffff;
-        color: #111827;
-        padding: 6px 10px;
-      }
-      .summary-card,
-      .section,
-      .card,
-      .rules,
-      .workflow,
-      .stat,
-      .day-card {
-        box-shadow: none !important;
-        background: #ffffff !important;
-        border: 1px solid #d1d5db;
-      }
-      .section {
-        margin-top: 8mm;
-        padding: 5mm;
-        page-break-inside: avoid;
-      }
-      .section h2 {
-        font-size: 16pt;
-      }
-      .sub,
-      .section p.lead,
-      .footer-note,
-      li {
-        color: #374151;
-      }
-      .timeline {
-        gap: 3mm;
-      }
-      .track-head, .track {
-        grid-template-columns: 38mm repeat(18, minmax(0, 1fr));
-        gap: 1.5mm;
-      }
-      .cell {
-        height: 8mm;
-        border-radius: 3mm;
-      }
-      .legend {
-        margin-top: 4mm;
-      }
-      .month-grid {
-        grid-template-columns: repeat(4, minmax(0, 1fr));
-        gap: 3mm;
-      }
-      .day-card {
-        min-height: 30mm;
-        padding: 3mm;
-        border-radius: 4mm;
-      }
-      .mini-event {
-        font-size: 8pt;
-        padding: 2mm 2.5mm;
-        border-radius: 2.5mm;
-        -webkit-print-color-adjust: exact;
-        print-color-adjust: exact;
-      }
-      .filled.paris,
-      .filled.toulouse,
-      .filled.calella,
-      .filled.travel,
-      .filled.buffer,
-      .swatch,
-      .tag,
-      .mini-event {
-        -webkit-print-color-adjust: exact;
-        print-color-adjust: exact;
-      }
-      .cards,
-      .summary-grid,
-      .split {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-      .card,
-      .rules,
-      .workflow,
-      .summary-card {
-        border-radius: 4mm;
-      }
-      .tag {
-        border: 0;
-      }
-      a {
-        color: inherit;
-        text-decoration: none;
-      }
+    .row {
+      display: grid;
+      grid-template-columns: 150px 1fr;
+      gap: 14px;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--line);
     }
-    @media (max-width: 980px) {
-      .hero, .split, .cards { grid-template-columns: 1fr; }
-      .month-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
-      .track-head, .track { grid-template-columns: 120px repeat(18, minmax(18px, 1fr)); }
+    .row:last-child { border-bottom: 0; }
+    .date { font-weight: 900; color: #111827; }
+    .footer {
+      text-align: center;
+      margin: 24px 0 8px;
+      color: var(--muted);
+      font-size: 0.95rem;
     }
-    @media (max-width: 680px) {
+    @media (max-width: 900px) {
+      .hero, .grid, .grid.two { grid-template-columns: 1fr; }
+      .calendar-frame { height: 620px; }
+    }
+    @media (max-width: 640px) {
       .wrap { padding: 16px; }
       .hero, .section { padding: 18px; }
-      .month-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-      .track-head, .track {
-        grid-template-columns: 1fr;
-      }
-      .track-label { margin-bottom: 6px; }
+      .row { grid-template-columns: 1fr; gap: 4px; }
+      .calendar-frame { height: 560px; }
     }
   </style>
 </head>
 <body>
-  <div class="wrap">
-    <div class="print-title">
-      <h1>France & Spain Trip 2026</h1>
-      <p>Marc and May, visual trip overview. Generated for clean PDF export.</p>
-    </div>
+  <main class="wrap">
     <section class="hero">
       <div>
-        <div class="eyebrow">Trip Dashboard</div>
+        <div class="eyebrow">Family trip page</div>
         <h1>France & Spain 2026</h1>
         <p class="sub">
-          A clean whole-trip view for Marc and May. Use this to see the shape of the trip at a glance,
-          then use Google Calendar to drag blocks around and refine the live plan.
+          A simple shared page for everyone helping with the trip — Marc, May, Patrick, Nina and family.
+          The calendar is the main thing: it shows the latest plan, fixed bookings, dinners and travel days.
         </p>
-        <div class="pill-row">
-          <span class="pill">Relaxed pace</span>
-          <span class="pill">Paris → Toulouse → Calella (2 nights) → Toulouse → Paris</span>
-          <span class="pill">Family-first trip</span>
-        </div>
         <div class="actions">
-          <a class="btn primary" href="https://calendar.google.com/calendar/u/0/r?cid=40d12cbbad6de226e1b0ce078a70f88b4e73cd9d21ba1df0352e7882eece781f%40group.calendar.google.com" target="_blank" rel="noreferrer">Open Google Calendar</a>
-          <a class="btn" href="France%20Spain%20Trip%20-%20May%202026.md">Open planning note</a>
-          <a class="btn" href="France%20Spain%20Trip%20-%20Visual%20Overview.md">Open visual overview note</a>
+          <a class="btn primary" href="https://calendar.google.com/calendar/u/0/r?cid=40d12cbbad6de226e1b0ce078a70f88b4e73cd9d21ba1df0352e7882eece781f%40group.calendar.google.com" target="_blank" rel="noreferrer">Open the live calendar</a>
+          <a class="btn" href="#quick-dates">See key dates</a>
         </div>
       </div>
-      <aside class="summary-card">
-        <div class="eyebrow">At a glance</div>
-        <div class="summary-grid">
-          <div class="stat">
-            <div class="stat-label">Travel window</div>
-            <div class="stat-value">25 May to 11 Jun</div>
-          </div>
-          <div class="stat">
-            <div class="stat-label">Main stops</div>
-            <div class="stat-value">Paris, Toulouse, Calella</div>
-          </div>
-          <div class="stat">
-            <div class="stat-label">Key priorities</div>
-            <div class="stat-value">Family, ease, flexibility</div>
-          </div>
-          <div class="stat">
-            <div class="stat-label">Planning mode</div>
-            <div class="stat-value">Blocks plus key bookings</div>
-          </div>
-        </div>
+      <aside class="notice">
+        <strong>What this page is for</strong>
+        Quick coordination, not over-planning. If something changes, the calendar should be treated as the most current version.
       </aside>
     </section>
 
-    <section class="section">
-      <h2>Whole-trip timeline</h2>
-      <p class="lead">This shows the current shape. It is not meant to be rigid, just easy to see and discuss.</p>
-      <div class="timeline">
-        <div class="track-head">
-          <div></div>
-          <div>25</div><div>26</div><div>27</div><div>28</div><div>29</div><div>30</div><div>31</div><div>1</div><div>2</div><div>3</div><div>4</div><div>5</div><div>6</div><div>7</div><div>8</div><div>9</div><div>10</div><div>11</div>
-        </div>
-        <div class="track">
-          <div class="track-label">Travel out</div>
-          <div class="cell filled travel"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div>
-        </div>
-        <div class="track">
-          <div class="track-label">Paris block</div>
-          <div class="cell filled paris"></div><div class="cell filled paris"></div><div class="cell filled paris"></div><div class="cell filled paris"></div><div class="cell filled paris"></div><div class="cell filled paris"></div><div class="cell filled paris"></div><div class="cell filled paris"></div><div class="cell filled paris"></div><div class="cell filled paris"></div><div class="cell filled paris"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell filled paris"></div><div class="cell"></div>
-        </div>
-        <div class="track">
-          <div class="track-label">Fixed anchors</div>
-          <div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell filled buffer"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell filled buffer"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div>
-        </div>
-        <div class="track">
-          <div class="track-label">Toulouse return</div>
-          <div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell filled toulouse"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div>
-        </div>
-        <div class="track">
-          <div class="track-label">Calella block</div>
-          <div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell filled calella"></div><div class="cell filled calella"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div>
-        </div>
-        <div class="track">
-          <div class="track-label">Travel + buffer</div>
-          <div class="cell filled travel"></div><div class="cell filled travel"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell filled travel"></div><div class="cell filled travel"></div><div class="cell filled travel"></div><div class="cell filled travel"></div><div class="cell"></div><div class="cell filled buffer"></div><div class="cell filled travel"></div>
-        </div>
-      </div>
-      <div class="legend">
-        <span class="legend-item"><span class="swatch" style="background: var(--travel)"></span>Travel</span>
-        <span class="legend-item"><span class="swatch" style="background: var(--paris)"></span>Paris</span>
-        <span class="legend-item"><span class="swatch" style="background: var(--toulouse)"></span>Toulouse</span>
-        <span class="legend-item"><span class="swatch" style="background: var(--calella)"></span>Calella</span>
-        <span class="legend-item"><span class="swatch" style="background: var(--buffer)"></span>Fixed anchors / buffer</span>
+    <section class="section" id="calendar">
+      <h2>Live trip calendar</h2>
+      <p class="lead">This is the most useful part of the page. Use it for dates, times, bookings, dinners and travel days.</p>
+      <iframe
+        class="calendar-frame"
+        src="https://calendar.google.com/calendar/embed?src=40d12cbbad6de226e1b0ce078a70f88b4e73cd9d21ba1df0352e7882eece781f%40group.calendar.google.com&ctz=Europe%2FParis&mode=AGENDA&showTitle=0&showPrint=0&showCalendars=0"
+        title="France & Spain Trip 2026 calendar">
+      </iframe>
+      <p class="calendar-fallback">If the embedded calendar does not load, use the blue “Open the live calendar” button above.</p>
+    </section>
+
+    <section class="section" id="quick-dates">
+      <h2>Key dates at a glance</h2>
+      <p class="lead">Short version of the plan, just enough for coordination.</p>
+      <div class="compact-list">
+        <div class="row"><div class="date">25 May</div><div>Marc and May arrive in Paris late evening.</div></div>
+        <div class="row"><div class="date">26 May–4 Jun</div><div>Main Paris stay with Marc’s dad and Nina.</div></div>
+        <div class="row"><div class="date">27 May</div><div>Fondation Louis Vuitton visit booked for 11:30; lunch planned at Le Frank.</div></div>
+        <div class="row"><div class="date">30 May</div><div>Roland Garros — tickets with Patrick.</div></div>
+        <div class="row"><div class="date">4 Jun</div><div>Celine’s birthday dinner in Paris.</div></div>
+        <div class="row"><div class="date">5 Jun</div><div>Train Paris Montparnasse → Toulouse Matabiau, then onward to Calella with Patrick.</div></div>
+        <div class="row"><div class="date">5–7 Jun</div><div>Calella stay at Patrick’s apartment in Spain.</div></div>
+        <div class="row"><div class="date">7 Jun</div><div>Return from Calella to Toulouse with Patrick.</div></div>
+        <div class="row"><div class="date">8–10 Jun</div><div>Final Paris buffer before flying home.</div></div>
+        <div class="row"><div class="date">11 Jun</div><div>Marc and May fly home.</div></div>
       </div>
     </section>
 
     <section class="section">
-      <h2>Month-style trip grid</h2>
-      <p class="lead">A quick visual calendar so you can see the full trip shape in one glance. For PDF export, enable background graphics in the print dialog if your browser offers it.</p>
-      <div class="month-grid">
-        <div class="day-card"><div class="day-top"><span>Mon</span><span>25</span></div><div class="mini-event travel">Travel day</div><div class="mini-event paris">Arrive Paris 23:30</div></div>
-        <div class="day-card"><div class="day-top"><span>Tue</span><span>26</span></div><div class="mini-event paris">Paris block</div><div class="mini-event paris">First full day</div></div>
-        <div class="day-card"><div class="day-top"><span>Wed</span><span>27</span></div><div class="mini-event paris">Paris block</div><div class="mini-event buffer">Fondation LV option</div></div>
-        <div class="day-card"><div class="day-top"><span>Thu</span><span>28</span></div><div class="mini-event paris">Paris block</div><div class="mini-event buffer">Orsay nocturne</div></div>
-        <div class="day-card"><div class="day-top"><span>Fri</span><span>29</span></div><div class="mini-event paris">Paris block</div><div class="mini-event buffer">Fondation LV option</div></div>
-        <div class="day-card"><div class="day-top"><span>Sat</span><span>30</span></div><div class="mini-event paris">Paris block</div><div class="mini-event buffer">Roland Garros</div></div>
-        <div class="day-card"><div class="day-top"><span>Sun</span><span>31</span></div><div class="mini-event paris">Paris block</div></div>
-
-        <div class="day-card"><div class="day-top"><span>Mon</span><span>1</span></div><div class="mini-event paris">Paris block</div></div>
-        <div class="day-card"><div class="day-top"><span>Tue</span><span>2</span></div><div class="mini-event paris">Paris block</div></div>
-        <div class="day-card"><div class="day-top"><span>Wed</span><span>3</span></div><div class="mini-event paris">Paris block</div></div>
-        <div class="day-card"><div class="day-top"><span>Thu</span><span>4</span></div><div class="mini-event paris">Paris block</div><div class="mini-event buffer">Celine dinner, 19:00</div></div>
-        <div class="day-card"><div class="day-top"><span>Fri</span><span>5</span></div><div class="mini-event travel">Paris → Toulouse → Calella</div><div class="mini-event calella">Calella</div></div>
-        <div class="day-card"><div class="day-top"><span>Sat</span><span>6</span></div><div class="mini-event calella">Calella</div><div class="mini-event calella">Second night</div></div>
-        <div class="day-card"><div class="day-top"><span>Sun</span><span>7</span></div><div class="mini-event travel">Calella → Toulouse</div><div class="mini-event toulouse">Toulouse</div></div>
-
-        <div class="day-card"><div class="day-top"><span>Mon</span><span>8</span></div><div class="mini-event travel">Toulouse → Paris</div><div class="mini-event paris">Paris buffer</div></div>
-        <div class="day-card"><div class="day-top"><span>Tue</span><span>9</span></div><div class="mini-event paris">Paris buffer</div><div class="mini-event buffer">Les Ombres, 19:00</div></div>
-        <div class="day-card"><div class="day-top"><span>Wed</span><span>10</span></div><div class="mini-event paris">Paris buffer</div></div>
-        <div class="day-card"><div class="day-top"><span>Thu</span><span>11</span></div><div class="mini-event travel">Return home</div></div>
-      </div>
-    </section>
-
-    <section class="section">
-      <h2>Trip blocks</h2>
-      <p class="lead">Each block has a clear purpose so the trip stays calm instead of turning into a scramble.</p>
-      <div class="cards">
+      <h2>Stays and logistics</h2>
+      <p class="lead">The practical bits everyone may need to know.</p>
+      <div class="grid">
         <article class="card">
           <div class="tag paris">Paris</div>
-          <h3>Paris block</h3>
+          <h3>Paris stay</h3>
           <ul>
-            <li>Late arrival on 25 May, then 26 May to 4 June as the main Paris block</li>
-            <li>See Marc's dad</li>
-            <li>Includes Fondation Louis Vuitton as a 27/29 May option, Roland Garros, the booked Le Tout-Paris dinner, and a possible Orsay evening</li>
+            <li>Marc and May stay with Marc’s dad and Nina.</li>
+            <li>Most Paris plans should remain relaxed around family time.</li>
+            <li>Musée d’Orsay is booked; tickets are with Nina.</li>
           </ul>
         </article>
         <article class="card">
           <div class="tag toulouse">Toulouse</div>
-          <h3>Toulouse transit / return</h3>
+          <h3>Toulouse</h3>
           <ul>
-            <li>Pass through Toulouse on 5 June en route south</li>
-            <li>Return via Toulouse on 7 June</li>
-            <li>Brother time built around the travel days</li>
+            <li>Staying with Patrick when in Toulouse.</li>
+            <li>Patrick drives Toulouse ↔ Calella both ways.</li>
+            <li>Return train Toulouse → Paris still needs to be booked.</li>
           </ul>
         </article>
         <article class="card">
           <div class="tag calella">Calella</div>
-          <h3>Calella block</h3>
+          <h3>Calella</h3>
           <ul>
-            <li>Two nights, 5 to 7 June</li>
-            <li>Second night is 6 June</li>
-            <li>Low-effort seaside reset</li>
+            <li>Two nights at Patrick’s apartment.</li>
+            <li>Keep it easy: seaside, family time, no packed schedule.</li>
+            <li>Dates: Friday 5 June to Sunday 7 June.</li>
           </ul>
         </article>
-        <article class="card">
-          <div class="tag buffer">Buffer</div>
-          <h3>Final Paris buffer</h3>
-          <ul>
-            <li>Back in Paris from 8 June</li>
-            <li>Protect the flight home</li>
-            <li>Keep stress low</li>
-          </ul>
-        </article>
-      </div>
-    </section>
-
-    <section class="section split">
-      <div class="rules">
-        <h2>Keep these rules</h2>
-        <ul>
-          <li>Protect 30 May and 4 June as hard Paris anchors</li>
-          <li>Do not overbook Paris or the Toulouse transit days</li>
-          <li>Keep Calella restful, not busy</li>
-          <li>Protect the last Paris buffer before the flight home</li>
-          <li>Add times only when something is actually booked</li>
-        </ul>
-      </div>
-      <div class="workflow">
-        <h2>Simple workflow</h2>
-        <ul>
-          <li>Look at this dashboard for the big picture</li>
-          <li>Use Google Calendar to drag blocks around the fixed anchors</li>
-          <li>Use the planning note for ideas and research</li>
-          <li>Add fixed-time details only when plans become real</li>
-        </ul>
-        <p class="footer-note">
-          Best practical combo: dashboard for clarity, Google Calendar for edits, trip note for thinking.
-        </p>
       </div>
     </section>
 
     <section class="section">
-      <h2>Paris decisions in motion</h2>
-      <p class="lead">Fondation Louis Vuitton is now pencilled for either 27 or 29 May, Le Tout-Paris is booked for 4 June, Orsay nocturne is confirmed for 28 May, and Les Ombres is booked for 9 June — belated birthday dinner for May.</p>
-      <div class="cards">
+      <h2>Useful reminders</h2>
+      <div class="grid two">
         <article class="card">
-          <div class="tag paris">Booked</div>
-          <h3>Le Tout-Paris</h3>
+          <div class="tag travel">Booked / fixed</div>
           <ul>
-            <li>Thursday 4 June at 19:00</li>
-            <li>Celine's birthday dinner</li>
-            <li>6 people, Quai du Louvre</li>
+            <li>Paris → Toulouse train is booked for Friday 5 June at 12:38.</li>
+            <li>Fondation Louis Vuitton is booked for Wednesday 27 May at 11:30.</li>
+            <li>Roland Garros and Musée d’Orsay are booked.</li>
           </ul>
         </article>
         <article class="card">
-          <div class="tag paris">Maybe</div>
-          <h3>Musée d'Orsay nocturne</h3>
+          <div class="tag travel">Still to confirm</div>
           <ul>
-            <li>Approved for Thursday 28 May</li>
-            <li>Late museum opening</li>
-            <li>Restaurant opens at 19:00</li>
-          </ul>
-        </article>
-        <article class="card">
-          <div class="tag paris">Booked</div>
-          <h3>Les Ombres</h3>
-          <ul>
-            <li>Tuesday 9 June at 19:00</li>
-            <li>Belated birthday dinner for May</li>
-            <li>4 guests, ref #11246 (OpenTable)</li>
-            <li>Booked by Nina</li>
-          </ul>
-        </article>
-        <article class="card">
-          <div class="tag paris">Choose date</div>
-          <h3>Fondation Louis Vuitton</h3>
-          <ul>
-            <li>Candidate visit on Wednesday 27 May or Friday 29 May</li>
-            <li>Modern art + Frank Gehry architecture</li>
-            <li>Best as a half-day Paris outing</li>
-          </ul>
-        </article>
-        <article class="card">
-          <div class="tag paris">Correction</div>
-          <h3>Paris arrival</h3>
-          <ul>
-            <li>CDG arrival is 25 May at 23:30</li>
-            <li>26 May is the first full Paris day</li>
-            <li>That wording is now fixed here</li>
+            <li>Toulouse → Paris return train.</li>
+            <li>Any exact meet-up times not already in the calendar.</li>
+            <li>Restaurant details should be checked in the calendar before the day.</li>
           </ul>
         </article>
       </div>
     </section>
-  </div>
+
+    <p class="footer">Friendly shared version — the calendar is the source of truth for current timings.</p>
+  </main>
 </body>
 </html>
