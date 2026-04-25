@@ -172,6 +172,46 @@
       line-height: 1.45;
     }
     .agenda-item strong { color: #111827; }
+    .month-grid {
+      display: grid;
+      grid-template-columns: repeat(7, minmax(0, 1fr));
+      gap: 10px;
+    }
+    .day-card {
+      min-height: 128px;
+      background: white;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .day-card.muted {
+      opacity: 0.55;
+      background: rgba(255,255,255,0.68);
+    }
+    .day-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.88rem;
+      font-weight: 900;
+    }
+    .mini-event {
+      padding: 7px 9px;
+      border-radius: 10px;
+      font-size: 0.82rem;
+      font-weight: 850;
+      line-height: 1.25;
+      color: white;
+    }
+    .mini-event.paris { background: var(--paris); }
+    .mini-event.toulouse { background: var(--toulouse); }
+    .mini-event.calella { background: var(--calella); }
+    .mini-event.travel { background: #334155; }
+    .mini-event.anchor { background: #b91c1c; }
+    .mini-event.open { background: #94a3b8; }
     .calendar-note {
       margin-top: 14px;
       color: var(--muted);
@@ -198,11 +238,13 @@
     }
     @media (max-width: 900px) {
       .hero, .grid, .grid.two { grid-template-columns: 1fr; }
+      .month-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
     }
     @media (max-width: 640px) {
       .wrap { padding: 16px; }
       .hero, .section { padding: 18px; }
       .row, .agenda-day { grid-template-columns: 1fr; gap: 8px; }
+      .month-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     }
   </style>
 </head>
@@ -283,6 +325,36 @@
         </div>
       </div>
       <p class="calendar-note">The blue button still opens the Google Calendar if anyone wants the live app view, but this page no longer depends on an embedded Google frame.</p>
+    </section>
+
+    <section class="section" id="visual-grid">
+      <h2>Visual trip grid</h2>
+      <p class="lead">Same plan, but easier to see at a glance. Purple is Paris, green is Toulouse, orange is Calella, dark blue is travel, red is a fixed family booking.</p>
+      <div class="month-grid">
+        <div class="day-card"><div class="day-top"><span>Mon</span><span>25</span></div><div class="mini-event travel">Fly / arrive Paris late</div></div>
+        <div class="day-card"><div class="day-top"><span>Tue</span><span>26</span></div><div class="mini-event paris">Paris — Dad & Nina</div><div class="mini-event open">Easy first day</div></div>
+        <div class="day-card"><div class="day-top"><span>Wed</span><span>27</span></div><div class="mini-event paris">Paris</div><div class="mini-event anchor">Fondation LV 11:30</div></div>
+        <div class="day-card"><div class="day-top"><span>Thu</span><span>28</span></div><div class="mini-event paris">Paris</div><div class="mini-event anchor">Musée d’Orsay</div></div>
+        <div class="day-card"><div class="day-top"><span>Fri</span><span>29</span></div><div class="mini-event paris">Paris</div></div>
+        <div class="day-card"><div class="day-top"><span>Sat</span><span>30</span></div><div class="mini-event paris">Paris</div><div class="mini-event anchor">Roland Garros</div></div>
+        <div class="day-card"><div class="day-top"><span>Sun</span><span>31</span></div><div class="mini-event paris">Paris</div></div>
+
+        <div class="day-card"><div class="day-top"><span>Mon</span><span>1</span></div><div class="mini-event paris">Paris</div></div>
+        <div class="day-card"><div class="day-top"><span>Tue</span><span>2</span></div><div class="mini-event paris">Paris</div></div>
+        <div class="day-card"><div class="day-top"><span>Wed</span><span>3</span></div><div class="mini-event paris">Paris</div></div>
+        <div class="day-card"><div class="day-top"><span>Thu</span><span>4</span></div><div class="mini-event paris">Paris</div><div class="mini-event anchor">Celine’s birthday dinner</div></div>
+        <div class="day-card"><div class="day-top"><span>Fri</span><span>5</span></div><div class="mini-event travel">Paris → Toulouse</div><div class="mini-event travel">Toulouse → Calella</div><div class="mini-event calella">Calella</div></div>
+        <div class="day-card"><div class="day-top"><span>Sat</span><span>6</span></div><div class="mini-event calella">Calella</div><div class="mini-event open">Easy seaside day</div></div>
+        <div class="day-card"><div class="day-top"><span>Sun</span><span>7</span></div><div class="mini-event travel">Calella → Toulouse</div><div class="mini-event toulouse">Toulouse</div></div>
+
+        <div class="day-card"><div class="day-top"><span>Mon</span><span>8</span></div><div class="mini-event travel">Toulouse → Paris</div><div class="mini-event open">Train still to book</div></div>
+        <div class="day-card"><div class="day-top"><span>Tue</span><span>9</span></div><div class="mini-event paris">Paris</div><div class="mini-event anchor">Les Ombres 19:00</div></div>
+        <div class="day-card"><div class="day-top"><span>Wed</span><span>10</span></div><div class="mini-event paris">Paris buffer</div></div>
+        <div class="day-card"><div class="day-top"><span>Thu</span><span>11</span></div><div class="mini-event travel">Fly home</div></div>
+        <div class="day-card muted"><div class="day-top"><span>Fri</span><span>12</span></div></div>
+        <div class="day-card muted"><div class="day-top"><span>Sat</span><span>13</span></div></div>
+        <div class="day-card muted"><div class="day-top"><span>Sun</span><span>14</span></div></div>
+      </div>
     </section>
 
     <section class="section" id="quick-dates">
